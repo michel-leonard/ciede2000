@@ -51,9 +51,9 @@ fn ciede_2000(l_1: f64, a_1: f64, b_1: f64, l_2: f64, a_2: f64, b_2: f64) -> f64
 	// These coefficients adjust the impact of different harmonic
 	// components on the hue difference calculation.
 	let t = 1.0 	+ 0.24 * (2.0 * h_m + PI * 0.5).sin()
-				+ 0.32 * (3.0 * h_m + 8.0 * PI / 15.0).sin()
-				- 0.17 * (h_m + PI / 3.0).sin()
-				- 0.20 * (4.0 * h_m + 3.0 * PI / 20.0).sin();
+			+ 0.32 * (3.0 * h_m + 8.0 * PI / 15.0).sin()
+			- 0.17 * (h_m + PI / 3.0).sin()
+			- 0.20 * (4.0 * h_m + 3.0 * PI / 20.0).sin();
 	n = c_1 + c_2;
 	// Hue.
 	let h = 2.0 * (c_1 * c_2).sqrt() * (h_d).sin() / (K_H * (1.0 + 0.0075 * n * t));
