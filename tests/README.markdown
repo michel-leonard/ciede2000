@@ -8,7 +8,7 @@ The developed `ciede_2000` functions produce the same result regardless of the o
 
 ## Test Samples
 
-The `logs.txt` file presents the results of testing the `ciede_2000` function across 10 programming languages. This table contains an extract of the 900,000,000 test samples, to validate implementations of the CIEDE2000 color difference formula. Each row contains two colors in L* a* b* format, and the test is successful if the difference between ΔE2000 does not exceed `1e-10`.
+The `logs.txt` file presents the results of testing the `ciede_2000` function across 10 programming languages. This table contains an extract of the 1,100,000,000 test samples, to validate implementations of the CIEDE2000 color difference formula. Each row contains two colors in L* a* b* format, and the test is successful if the difference between ΔE2000 does not exceed `1e-10`.
 
 | L1 | a1 | b1 | L2 | a2 | b2 | ΔE2000 | Possible Error in ΔE2000 |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
