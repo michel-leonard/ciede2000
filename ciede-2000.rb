@@ -50,7 +50,7 @@ def ciede_2000(l_1, a_1, b_1, l_2, a_2, b_2)
 	l = (l_2 - l_1) / (k_l * (1.0 + 0.015 * n / Math.sqrt(20.0 + n)))
 	# These coefficients adjust the impact of different harmonic
 	# components on the hue difference calculation.
-	t = 1.0 + 0.24 * Math.sin(2.0 * h_m + Math::PI / 2) \
+	t = 1.0 + 0.24 * Math.sin(2.0 * h_m + Math::PI / 2.0) \
 		+ 0.32 * Math.sin(3.0 * h_m + 8.0 * Math::PI / 15.0) \
 		- 0.17 * Math.sin(h_m + Math::PI / 3.0) \
 		- 0.20 * Math.sin(4.0 * h_m + 3.0 * Math::PI / 20.0)
