@@ -1,0 +1,174 @@
+Test of the CIEDE2000 function involving 900,000,000 comparisons between 10 programming languages :
+ - C ... c
+ - Rust ... rs
+ - Go ... go
+ - Java ... java
+ - Kotlin ... kt
+ - JavaScript ... js
+ - LuaJIT ... lua
+ - PHP ... php
+ - Python ... py
+ - Ruby ... rb
+
+
+
+------------------------------
+---------- [ c ] -------------
+------------------------------
+ - C prepare the CSV file : prepare_values('./values-c.txt', 10000000) ......................... took 64.2s
+ - C CSV file character set is ["\n",10000000] [",",60000000] ["-",19993137] [".",40001211] ["0",65927552] ["1",85552794] ["2",75351350] ["3",72938467] ["4",73098655] ["5",73319809] ["6",73472388] ["7",73249369] ["8",72693129] ["9",72317671] ["e",20]
+   - Rust test the C file : compare_values('./../c/values-c.txt') .............................. took 28.7s
+   - Go test the C file : compare_values('./../c/values-c.txt') ................................ took 20.4s
+   - Java test the C file : compare_values('./../c/values-c.txt') .............................. took 42.5s
+   - Kotlin test the C file : compare_values('./../c/values-c.txt') ............................ took 35.5s
+   - JavaScript test the C file : compare_values('./../c/values-c.txt') ........................ took 34.0s
+   - LuaJIT test the C file : compare_values('./../c/values-c.txt') ............................ took 64.6s
+   - PHP test the C file : compare_values('./../c/values-c.txt') ............................... took 127.4s
+   - Python test the C file : compare_values('./../c/values-c.txt') ............................ took 99.8s
+   - Ruby test the C file : compare_values('./../c/values-c.txt') .............................. took 192.8s
+
+
+------------------------------
+---------- [ rs ] ------------
+------------------------------
+ - Rust prepare the CSV file : prepare_values('./values-rs.txt', 10000000) ..................... took 140.1s
+ - Rust CSV file character set is ["\n",10000000] [",",60000000] ["-",10000754] [".",39998890] ["0",71475649] ["1",76424514] ["2",70156993] ["3",69086096] ["4",70209472] ["5",70328769] ["6",70061579] ["7",68522959] ["8",67788710] ["9",66658202]
+   - C test the Rust file : compare_values('./../rs/values-rs.txt') ............................ took 19.6s
+   - Go test the Rust file : compare_values('./../rs/values-rs.txt') ........................... took 18.9s
+   - Java test the Rust file : compare_values('./../rs/values-rs.txt') ......................... took 40.7s
+   - Kotlin test the Rust file : compare_values('./../rs/values-rs.txt') ....................... took 35.1s
+   - JavaScript test the Rust file : compare_values('./../rs/values-rs.txt') ................... took 34.5s
+   - LuaJIT test the Rust file : compare_values('./../rs/values-rs.txt') ....................... took 60.7s
+   - PHP test the Rust file : compare_values('./../rs/values-rs.txt') .......................... took 118.5s
+   - Python test the Rust file : compare_values('./../rs/values-rs.txt') ....................... took 100.1s
+   - Ruby test the Rust file : compare_values('./../rs/values-rs.txt') ......................... took 179.9s
+
+
+------------------------------
+---------- [ go ] ------------
+------------------------------
+ - Go prepare the CSV file : prepare_values('./values-go.txt', 10000000) ....................... took 71.8s
+ - Go CSV file character set is ["\n",10000000] [",",60000000] ["-",20000056] [".",70000000] ["0",534309579] ["1",106552187] ["2",91131267] ["3",85647775] ["4",86974631] ["5",86432560] ["6",86237667] ["7",85057724] ["8",88453665] ["9",88969523]
+   - C test the Go file : compare_values('./../go/values-go.txt') .............................. took 27.4s
+   - Rust test the Go file : compare_values('./../go/values-go.txt') ........................... took 33.1s
+   - Java test the Go file : compare_values('./../go/values-go.txt') ........................... took 64.8s
+   - Kotlin test the Go file : compare_values('./../go/values-go.txt') ......................... took 47.1s
+   - JavaScript test the Go file : compare_values('./../go/values-go.txt') ..................... took 41.1s
+   - LuaJIT test the Go file : compare_values('./../go/values-go.txt') ......................... took 78.1s
+   - PHP test the Go file : compare_values('./../go/values-go.txt') ............................ took 193.7s
+   - Python test the Go file : compare_values('./../go/values-go.txt') ......................... took 78.0s
+   - Ruby test the Go file : compare_values('./../go/values-go.txt') ........................... took 199.6s
+
+
+------------------------------
+---------- [ java ] ----------
+------------------------------
+ - Java prepare the CSV file : prepare_values('./values-java.txt', 10000000) ................... took 41.4s
+ - Java CSV file character set is ["\n",10000000] [",",60000000] ["-",19964715] [".",70000000] ["0",93341784] ["1",81770087] ["2",72472157] ["3",70253777] ["4",71590660] ["5",71973965] ["6",71918363] ["7",70560543] ["8",69789185] ["9",68539195] ["E",251]
+   - C test the Java file : compare_values('./../java/values-java.txt') ........................ took 20.8s
+   - Rust test the Java file : compare_values('./../java/values-java.txt') ..................... took 31.4s
+   - Go test the Java file : compare_values('./../java/values-java.txt') ....................... took 19.2s
+   - Kotlin test the Java file : compare_values('./../java/values-java.txt') ................... took 32.2s
+   - JavaScript test the Java file : compare_values('./../java/values-java.txt') ............... took 38.5s
+   - LuaJIT test the Java file : compare_values('./../java/values-java.txt') ................... took 62.3s
+   - PHP test the Java file : compare_values('./../java/values-java.txt') ...................... took 128.3s
+   - Python test the Java file : compare_values('./../java/values-java.txt') ................... took 102.6s
+   - Ruby test the Java file : compare_values('./../java/values-java.txt') ..................... took 177.7s
+
+
+------------------------------
+---------- [ kt ] ------------
+------------------------------
+ - Kotlin prepare the CSV file : prepare_values('./values-kt.txt', 10000000) ................... took 40.6s
+ - Kotlin CSV file character set is ["\n",10000000] [",",60000000] ["-",19992898] [".",70000000] ["0",99849218] ["1",109949276] ["2",101166216] ["3",99086392] ["4",100902591] ["5",101390463] ["6",101261197] ["7",99384430] ["8",98467736] ["9",96803350] ["E",406]
+   - C test the Kotlin file : compare_values('./../kt/values-kt.txt') .......................... took 24.2s
+   - Rust test the Kotlin file : compare_values('./../kt/values-kt.txt') ....................... took 31.7s
+   - Go test the Kotlin file : compare_values('./../kt/values-kt.txt') ......................... took 22.3s
+   - Java test the Kotlin file : compare_values('./../kt/values-kt.txt') ....................... took 55.2s
+   - JavaScript test the Kotlin file : compare_values('./../kt/values-kt.txt') ................. took 36.7s
+   - LuaJIT test the Kotlin file : compare_values('./../kt/values-kt.txt') ..................... took 74.0s
+   - PHP test the Kotlin file : compare_values('./../kt/values-kt.txt') ........................ took 160.5s
+   - Python test the Kotlin file : compare_values('./../kt/values-kt.txt') ..................... took 105.1s
+   - Ruby test the Kotlin file : compare_values('./../kt/values-kt.txt') ....................... took 193.0s
+
+
+------------------------------
+---------- [ js ] ------------
+------------------------------
+ - JavaScript prepare the CSV file : prepare_values("./values-js.txt", 10000000) ............... took 71.5s
+ - JavaScript CSV file character set is ["\n",10000000] [",",60000000] ["-",19998845] [".",50005670] ["0",31355960] ["1",51548955] ["2",36527065] ["3",32830866] ["4",33321526] ["5",33555487] ["6",33676950] ["7",33173545] ["8",32512782] ["9",31994049]
+   - C test the JavaScript file : compare_values('./../js/values-js.txt') ...................... took 18.2s
+   - Rust test the JavaScript file : compare_values('./../js/values-js.txt') ................... took 28.1s
+   - Go test the JavaScript file : compare_values('./../js/values-js.txt') ..................... took 17.9s
+   - Java test the JavaScript file : compare_values('./../js/values-js.txt') ................... took 30.0s
+   - Kotlin test the JavaScript file : compare_values('./../js/values-js.txt') ................. took 22.0s
+   - LuaJIT test the JavaScript file : compare_values('./../js/values-js.txt') ................. took 52.9s
+   - PHP test the JavaScript file : compare_values('./../js/values-js.txt') .................... took 81.0s
+   - Python test the JavaScript file : compare_values('./../js/values-js.txt') ................. took 85.0s
+   - Ruby test the JavaScript file : compare_values('./../js/values-js.txt') ................... took 171.3s
+
+
+------------------------------
+---------- [ lua ] -----------
+------------------------------
+ - LuaJIT prepare the CSV file : prepare_values('./values-lua.txt', 10000000) .................. took 18.6s
+ - LuaJIT CSV file character set is ["\n",10000000] [",",60000000] ["-",19999949] [".",70000000] ["0",43638433] ["1",58646747] ["2",48525740] ["3",46182596] ["4",46363076] ["5",46565426] ["6",46707804] ["7",46472514] ["8",45833007] ["9",45536249]
+   - C test the LuaJIT file : compare_values('./../lua/values-lua.txt') ........................ took 22.3s
+   - Rust test the LuaJIT file : compare_values('./../lua/values-lua.txt') ..................... took 27.5s
+   - Go test the LuaJIT file : compare_values('./../lua/values-lua.txt') ....................... took 16.2s
+   - Java test the LuaJIT file : compare_values('./../lua/values-lua.txt') ..................... took 31.1s
+   - Kotlin test the LuaJIT file : compare_values('./../lua/values-lua.txt') ................... took 21.6s
+   - JavaScript test the LuaJIT file : compare_values('./../lua/values-lua.txt') ............... took 35.5s
+   - PHP test the LuaJIT file : compare_values('./../lua/values-lua.txt') ...................... took 92.3s
+   - Python test the LuaJIT file : compare_values('./../lua/values-lua.txt') ................... took 89.7s
+   - Ruby test the LuaJIT file : compare_values('./../lua/values-lua.txt') ..................... took 160.7s
+
+
+------------------------------
+---------- [ php ] -----------
+------------------------------
+ - PHP prepare the CSV file : prepare_values('./values-php.txt', 10000000) ..................... took 79.8s
+ - PHP CSV file character set is ["\n",10000000] [",",60000000] ["-",20075634] [".",47799666] ["0",23236112] ["1",43563991] ["2",33373628] ["3",31135927] ["4",31309494] ["5",31528753] ["6",31641953] ["7",31292874] ["8",30798407] ["9",30486025]
+   - C test the PHP file : compare_values('./../php/values-php.txt') ........................... took 17.7s
+   - Rust test the PHP file : compare_values('./../php/values-php.txt') ........................ took 29.4s
+   - Go test the PHP file : compare_values('./../php/values-php.txt') .......................... took 16.1s
+   - Java test the PHP file : compare_values('./../php/values-php.txt') ........................ took 24.8s
+   - Kotlin test the PHP file : compare_values('./../php/values-php.txt') ...................... took 19.3s
+   - JavaScript test the PHP file : compare_values('./../php/values-php.txt') .................. took 32.4s
+   - LuaJIT test the PHP file : compare_values('./../php/values-php.txt') ...................... took 51.6s
+   - Python test the PHP file : compare_values('./../php/values-php.txt') ...................... took 84.7s
+   - Ruby test the PHP file : compare_values('./../php/values-php.txt') ........................ took 163.7s
+
+
+------------------------------
+---------- [ py ] ------------
+------------------------------
+ - Python prepare the CSV file : prepare_values('./values-py.txt', 10000000) ................... took 201.3s
+ - Python CSV file character set is ["\n",10000000] [",",60000000] ["-",19998796] [".",70000000] ["0",47691843] ["1",45654964] ["2",35684765] ["3",33323770] ["4",33864609] ["5",34107065] ["6",34204115] ["7",33618985] ["8",32997736] ["9",32453374]
+   - C test the Python file : compare_values('./../py/values-py.txt') .......................... took 18.8s
+   - Rust test the Python file : compare_values('./../py/values-py.txt') ....................... took 28.6s
+   - Go test the Python file : compare_values('./../py/values-py.txt') ......................... took 17.7s
+   - Java test the Python file : compare_values('./../py/values-py.txt') ....................... took 28.9s
+   - Kotlin test the Python file : compare_values('./../py/values-py.txt') ..................... took 22.7s
+   - JavaScript test the Python file : compare_values('./../py/values-py.txt') ................. took 34.2s
+   - LuaJIT test the Python file : compare_values('./../py/values-py.txt') ..................... took 54.4s
+   - PHP test the Python file : compare_values('./../py/values-py.txt') ........................ took 82.6s
+   - Ruby test the Python file : compare_values('./../py/values-py.txt') ....................... took 165.9s
+
+
+------------------------------
+---------- [ rb ] ------------
+------------------------------
+ - Ruby prepare the CSV file : prepare_values('./values-rb.txt', 10000000) ..................... took 249.8s
+ - Ruby CSV file character set is ["\n",10000000] [",",60000000] ["-",19924658] [".",26666003] ["0",25530077] ["1",42820361] ["2",32898590] ["3",30299980] ["4",30827057] ["5",31070479] ["6",31167763] ["7",30586189] ["8",30228839] ["9",29426903]
+   - C test the Ruby file : compare_values('./../rb/values-rb.txt') ............................ took 17.1s
+   - Rust test the Ruby file : compare_values('./../rb/values-rb.txt') ......................... took 27.2s
+   - Go test the Ruby file : compare_values('./../rb/values-rb.txt') ........................... took 15.5s
+   - Java test the Ruby file : compare_values('./../rb/values-rb.txt') ......................... took 29.6s
+   - Kotlin test the Ruby file : compare_values('./../rb/values-rb.txt') ....................... took 20.5s
+   - JavaScript test the Ruby file : compare_values('./../rb/values-rb.txt') ................... took 36.1s
+   - LuaJIT test the Ruby file : compare_values('./../rb/values-rb.txt') ....................... took 45.9s
+   - PHP test the Ruby file : compare_values('./../rb/values-rb.txt') .......................... took 73.2s
+   - Python test the Ruby file : compare_values('./../rb/values-rb.txt') ....................... took 82.9s
+
+Result: after 110 minutes, the 10 languages produce the same output with a tolerance of 1e-10.
