@@ -66,7 +66,7 @@ sub ciede_2000 {
 }
 
 #
-# More samples for the CIEDE2000 color difference formula implementation at https:#bit.ly/ciede2000-samples
+# More samples for the CIEDE2000 color difference formula implementation at https://bit.ly/ciede2000-samples
 #
 # Testing lab(68.8, 31.7, 61.68) vs lab(68.8, 31.7, 61.68) expects ΔE2000 = ΔE00 = 0.0
 # Testing lab(73.4489, 2.624, -80.948) vs lab(73.4489, 2.624, -81.0) expects ΔE2000 = ΔE00 = 0.01199644243
