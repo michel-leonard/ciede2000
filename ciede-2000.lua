@@ -51,7 +51,7 @@ function ciede_2000(l_1, a_1, b_1, l_2, a_2, b_2)
 	local l = (l_2 - l_1) / (k_l * (1.0 + 0.015 * n / math.sqrt(20.0 + n)));
 	-- These coefficients adjust the impact of different harmonic
 	-- components on the hue difference calculation.
-	local t = 1.0 + 0.24 * math.sin(2.0 * h_m + math.pi / 2)
+	local t = 1.0 + 0.24 * math.sin(2.0 * h_m + math.pi / 2.0)
 				+ 0.32 * math.sin(3.0 * h_m + 8.0 * math.pi / 15.0)
 				- 0.17 * math.sin(h_m + math.pi / 3.0)
 				- 0.20 * math.sin(4.0 * h_m + 3.0 * math.pi / 20.0);
