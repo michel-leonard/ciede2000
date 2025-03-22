@@ -49,10 +49,10 @@ function ciede_2000(l_1: number, a_1: number, b_1: number, l_2: number, a_2: num
 	const l = (l_2 - l_1) / (k_l * (1.0 + 0.015 * n / Math.sqrt(20.0 + n)));
 	// These coefficients adjust the impact of different harmonic
 	// components on the hue difference calculation.
-	const t = 1.0 + 0.24 * Math.sin(2.0 * h_m + Math.PI / 2)
-				+ 0.32 * Math.sin(3.0 * h_m + 8.0 * Math.PI / 15.0)
-				- 0.17 * Math.sin(h_m + Math.PI / 3.0)
-				- 0.20 * Math.sin(4.0 * h_m + 3.0 * Math.PI / 20.0);
+	const t = 1.0 + 0.24 * Math.sin(2.0 * h_m + Math.PI / 2.0)
+			+ 0.32 * Math.sin(3.0 * h_m + 8.0 * Math.PI / 15.0)
+			- 0.17 * Math.sin(h_m + Math.PI / 3.0)
+			- 0.20 * Math.sin(4.0 * h_m + 3.0 * Math.PI / 20.0);
 	n = c_1 + c_2;
 	// Hue.
 	const h = 2.0 * Math.sqrt(c_1 * c_2) * Math.sin(h_d) / (k_h * (1.0 + 0.0075 * n * t));
