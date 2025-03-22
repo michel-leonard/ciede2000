@@ -123,7 +123,7 @@ Based on our JavaScript implementation, you can see the CIEDE2000 color differen
 
 ## Testing and Validation
 
-To ensure **accurate color evaluation**, [extensive testing](tests#ciede-2000-function-test) involving 900,000,000 comparisons has been conducted. The correctness and consistency of the implementations across programming languages is the essence of this project :
+To ensure **accurate color evaluation**, [extensive testing](tests#ciede-2000-function-test) involving 1,100,000,000 comparisons has been conducted. The correctness and consistency of the implementations across programming languages is the essence of this project :
 - **Test Cases**: Each programming language generates a set of 10,000,000 random samples in a CSV file.
 - **Tolerance**: All programming languages ​​reproduce all samples except their own, with a tolerance of 1e-10.
 - **Cross-Language**: This procedure is strictly respected, and could remain so for new programming languages.
