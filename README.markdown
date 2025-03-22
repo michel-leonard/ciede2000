@@ -19,6 +19,7 @@ The implementation of the **CIE ΔE00** consists of a single function with consi
 - Java — Kotlin
 - JavaScript — TypeScript
 - Lua — LuaJIT
+- Perl
 - PHP
 - Python
 - Ruby
@@ -75,6 +76,13 @@ console.log(deltaE);
 -- Example usage in Lua
 local deltaE = ciede_2000(l1, a1, b1, l2, a2, b2);
 print(deltaE);
+```
+
+### Perl
+```pl
+# Example usage in Perl
+my $deltaE = ciede_2000($l1, $a1, $b1, $l2, $a2, $b2);
+print $deltaE;
 ```
 
 ### PHP
@@ -153,6 +161,7 @@ Runtimes were recorded while calculating 100 million iterations of the color dif
 | PHP | Interpreted | 03:28 | 4.57× slower |
 | Lua | Interpreted | 07:03 | 9.36× slower |
 | Ruby | Interpreted | 07:20 | 9.65× slower |
+| Perl | Interpreted | 08:20 | 12.44× slower |
 | Python | Interpreted | 10:13 | 13.45× slower |
 
 ## Contributing
