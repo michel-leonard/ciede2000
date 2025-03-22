@@ -64,7 +64,7 @@ def ciede_2000(l_1, a_1, b_1, l_2, a_2, b_2):
 	return sqrt(l * l + h * h + c * c + c * h * r_t)
 
 #
-# More samples for the CIEDE2000 color difference formula implementation at https:#bit.ly/ciede2000-samples
+# More samples for the CIEDE2000 color difference formula implementation at https://bit.ly/ciede2000-samples
 #
 # Testing lab(63.772, 124.0, -126.8218) vs lab(63.772, 124.0, -126.8218) expects ΔE2000 = ΔE00 = 0.0
 # Testing lab(25.1, 76.9193, 125.25) vs lab(25.1, 76.96, 125.25) expects ΔE2000 = ΔE00 = 0.01492233121
