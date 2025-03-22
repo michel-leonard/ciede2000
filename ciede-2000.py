@@ -43,14 +43,14 @@ def ciede_2000(l_1, a_1, b_1, l_2, a_2, b_2):
 	# The hue rotation correction term is designed to account for the
 	# non-linear behavior of hue differences in the blue region.
 	r_t = -2.0 * sqrt(n / (n + 6103515625.0)) \
-				* sin(pi / 3.0 * exp(p * p / (-25.0 * pi * pi)))
+			* sin(pi / 3.0 * exp(p * p / (-25.0 * pi * pi)))
 	n = (l_1 + l_2) * 0.5
 	n = (n - 50.0) * (n - 50.0)
 	# Lightness.
 	l = (l_2 - l_1) / (k_l * (1.0 + 0.015 * n / sqrt(20.0 + n)))
 	# These coefficients adjust the impact of different harmonic
 	# components on the hue difference calculation.
-	t = 1.0 + 0.24 * sin(2.0 * h_m + pi / 2) \
+	t = 1.0 + 0.24 * sin(2.0 * h_m + pi / 2.0) \
 			 + 0.32 * sin(3.0 * h_m + 8.0 * pi / 15.0) \
 			 - 0.17 * sin(h_m + pi / 3.0) \
 			 - 0.20 * sin(4.0 * h_m + 3.0 * pi / 20.0)
