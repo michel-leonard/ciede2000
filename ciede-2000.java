@@ -55,7 +55,7 @@ static double ciede_2000(final double l_1, final double a_1, final double b_1, f
 	final double l = (l_2 - l_1) / (k_l * (1.0 + 0.015 * n / sqrt(20.0 + n)));
 	// These coefficients adjust the impact of different harmonic
 	// components on the hue difference calculation.
-	final double t = 1.0 + 0.24 * sin(2.0 * h_m + PI / 2)
+	final double t = 1.0 + 0.24 * sin(2.0 * h_m + PI / 2.0)
 			+ 0.32 * sin(3.0 * h_m + 8.0 * PI / 15.0)
 			- 0.17 * sin(h_m + PI / 3.0)
 			- 0.20 * sin(4.0 * h_m + 3.0 * PI / 20.0);
