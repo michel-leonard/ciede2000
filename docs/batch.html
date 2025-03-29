@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CIE ΔE 2000 Comparison Tool</title>
+	<!-- Tue, 25 Mar 2025 11:18:41 GMT -->
+	<style>body{font-family:Arial,sans-serif;background-color:#f4f4f9;background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 200 200'%3E%3Cdefs%3E%3Cpattern id='textPattern' patternUnits='userSpaceOnUse' width='200' height='200'%3E%3Ctext x='120' y='50' font-size='20' fill='%23d5d5d5' transform='rotate(40 40 40)' text-anchor='middle' font-family='Arial, sans-serif'%3Ewith ΔE 2000 ...%3C/text%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23textPattern)' /%3E%3C/svg%3E");margin:0;padding:20px}a{color:blue}table a{color:mediumblue;text-decoration:none}.container{max-width:800px;margin:0 auto;padding:20px;background-color:#fff;border-radius:8px;box-shadow:0 0 10px #0000001a}h1{text-align:center}h1 + p{text-align:center;margin-bottom:40px}.tabs{display:flex;justify-content:center;margin-bottom:40px}.tab-button{padding:10px 20px;margin:0 10px;cursor:pointer;background-color:#007bff;color:#fff;border:none;border-radius:5px}.tab-button:hover{box-shadow:rgba(0, 0, 0, 0.35) 0px 5px 15px}.tab-button.active{background-color:#0056b3;font-weight:700;box-shadow:rgba(0, 0, 0, 0.35) 0px 5px 15px}.tab-content{display:none}.tab-content.active{display:block}div.form{display:flex;flex-direction:column;gap:10px}div.form label{font-weight:700}div.form input,div.form select{padding:5px;font-size:1rem;border:1px solid #ccc;border-radius:5px}div.form button{padding:10px;background-color:#28a745;color:#fff;border:none;border-radius:5px;cursor:pointer;margin-top:10px;font-size:20px}div.form button:hover{background-color:#218838}#validationResults{margin-top:20px}table{width:100%;border-collapse:collapse;text-align:center;margin-bottom:20px}table tbody tr td:nth-child(2){text-align:left}table th,table td{padding:10px;border:1px solid #ddd}tfoot td{text-decoration:underline}tfoot{order:1}#errorTable td{background:#fce4e4}#successTable td{background:#dff6dd}.hidden{display:none}</style>
+</head>
+<body>
+  <div class="container">
+	<h1>CIE ΔE 2000 Comparison Tool</h1>
+	<p>This testing tool based on our <a target="_blank" href="https://github.com/michel-leonard/ciede2000/blob/main/ciede-2000.js#L5">JavaScript</a> ΔE 2000 function is not an official CIE application.</p>
+	<!-- Tab Menu -->
+	<div class="tabs">
+	  <button class="tab-button active" data-tab="generate">Generate CSV File</button>
+	  <button class="tab-button" data-tab="validate">Validate CSV File</button>
+	  <button class="tab-button" data-tab="solve">Solve CSV File</button>
+	  <button class="tab-button" data-tab="about">About</button>
+	</div>
+
+	<!-- Generate CSV Form -->
+	<div id="generate" class="tab-content active">
+	  <h2>Generate Test CSV File</h2>
+	  <p>To validate your implementation, use the 2 random colors in <b>L* a* b* format</b> represented by the first 6 columns of the generated file, then verify that the 7ᵗʰ column matches your calculated CIE ΔE 2000 to 10 decimal places.</p>
+	  <div class="form" id="generateForm">
+		<label for="sequenceNumber">Sequence Number (Seed):</label>
+		<input type="number" id="sequenceNumber" name="sequenceNumber" value="1" required>
+		<label for="sampleCount">Number of Samples (Max: 1,000,000):</label>
+		<input type="number" id="sampleCount" name="sampleCount" value="1000" min="1" max="1000000" required>
+		<label for="mode-generate">File Contents:</label>
+		<select id="mode-generate" name="separator">
+		  <option value="mode-1">7 columns — two random L* a* b* colors with their ΔE 2000</option>
+		  <option value="mode-2">6 columns — two random L* a* b* colors only</option>
+		</select>
+		<label for="separator-generate">CSV Separator:</label>
+		<select id="separator-generate" name="separator">
+		  <option value="comma">Comma (",")</option>
+		  <option value="semicolon">Semicolon (";")</option>
+		  <option value="tab">Tab</option>
+		</select>
+		<button type="submit" id="generate-csv">Generate CSV</button>
+	  </div>
+	</div>
+
+	<!-- Validate CSV Form -->
+	<div id="validate" class="tab-content">
+	<h2>Validate CSV File</h2>
+	<p>The 2 colors in <b>L* a* b* format</b>, represented by the first 6 columns of your file, are passed as parameter to the <i>ciede_2000</i> function, and the tool will display the inconsistencies found with respect to your 7ᵗʰ column.</p>
+	<div class="form" id="validateForm">
+		<label for="fileInput">Select CSV File:</label>
+		<input type="file" id="fileInput" name="fileInput" required>
+		<label for="separator">CSV Separator:</label>
+		<select id="separator" name="separator">
+		  <option value="comma">Comma (",")</option>
+		  <option value="semicolon">Semicolon (";")</option>
+		  <option value="tab">Tab</option>
+		</select>
+		<label for="tolerance">Tolerance (ΔE 2000):</label>
+		<input type="number" id="tolerance" name="tolerance" value="0.0000000001" min="0.0000000000000001" max="0.0001">
+		<button type="submit" id="validate-file">Validate CSV</button>
+	</div>
+	<div id="validationResults" class="hidden">
+		<h3>Validation Results</h3>
+		<table id="errorTable" class="hidden">
+		  <thead>
+			<tr>
+			  <th>#</th>
+			  <th>Command</th>
+			  <th>Your ΔE 2000</th>
+			  <th>Error</th>
+			</tr>
+		  </thead>
+		 <tbody></tbody>
+		 <tfoot></tfoot>
+		</table>
+		
+		<table id="successTable" class="hidden">
+		  <thead>
+			<tr>
+			  <th>#</th>
+			  <th>Command</th>
+			  <th>Difference</th>
+			</tr>
+		  </thead>
+		  <tbody></tbody>
+		  <tfoot></tfoot>
+		</table>
+	  </div>
+	</div>
+
+	<!-- Solve CSV File -->
+	<div id="solve" class="tab-content">
+	<h2>Solve CSV File</h2>
+	<p>Provide a file with rows of 6 columns representing 2 colors in <b>L* a* b* format</b>, and the file will be completed, based on your separator, with their ΔE 2000 values accurate to 10 decimal places.</p>
+	<div class="form" id="solveForm">
+		<label for="fileInput">Select CSV File:</label>
+		<input type="file" id="solveFileInput" name="fileInput" required>
+		<label for="separator-solve">CSV Separator:</label>
+		<select id="separator-solve" name="separator">
+		  <option value="comma">Comma (",")</option>
+		  <option value="semicolon">Semicolon (";")</option>
+		  <option value="tab">Tab</option>
+		</select>
+		<button type="submit" id="solve-file">Solve CSV</button>
+	  </div>
+	</div>
+
+	<!-- About -->
+	<div id="about" class="tab-content">
+	<h2>About</h2>
+	<p>This tool was created in 2025 to facilitate implementations of the CIE ΔE 2000 function. The implementations in our <a href="https://github.com/michel-leonard/ciede2000">GitHub repository</a> were able to reproduce <b>7,500,000</b> samples generated here with an accuracy of <b>1e-10</b>.</p>
+		<h2>Classic Browser-Based Applications</h2>
+		<p>
+		<ul>
+			<li>A <a href="https://michel-leonard.github.io/ciede2000">tool</a> that identify the name of the selected color based on a picture.</li>
+			<li>A <a href="https://michel-leonard.github.io/ciede2000/samples.html">discovery generator</a> for quick, small-scale testing and exploration.</li>
+			<li>A <a href="https://michel-leonard.github.io/ciede2000/calculator.html">simple calculator</a> of the <strong>ΔE 2000</strong>, given two L*a*b* colors.</li>
+		</ul>
+		</p>
+	</div>
+  </div>
+
+	<script src="delta-e-2000.js"></script>
+	<script>
+	const tabs_actions = [...document.querySelectorAll('.tabs .tab-button')]
+	const tabs_contents = [...document.querySelectorAll('.tab-content')]
+
+	for(let i = 0; i < tabs_actions.length; ++i)
+		tabs_actions[i].addEventListener('click', () => {
+			for(let j = 0; j < tabs_actions.length; ++j) {
+				tabs_actions[j].classList[i == j ? 'add' : 'remove']('active')
+				tabs_contents[j].classList[i == j ? 'add' : 'remove']('active')
+			}
+		})
+
+	function format_difference(difference){
+		let message = '' + difference
+		if (/^[0-9].[^e]+e-/.test(message)) {
+			const a = message.split('.')[0], b = message.split('e')[1]
+			return a + 'e<b>' + b + '</b>'
+		}
+		return '<b>' + message + '</b>'
+	}
+	
+	function link(l_1, a_1, b_1, l_2, a_2, b_2) {
+		return "https://michel-leonard.github.io/ciede2000/calculator.html?L1=" + l_1 + "&a1=" + a_1 + "&b1=" + b_1 + "&L2=" + l_2 + "&a2=" + a_2 + "&b2=" + b_2
+	}
+	
+	function with_dots(s) {
+	return s.replaceAll(/([0-9.-]+)(,?)/g, (m, n, c) => {
+				if (/^[0-9-]+$/.test(n))
+					n += '.0'
+				return c === ',' ? n + ', ' : n
+			})
+	}
+
+	function open_file(file) {
+	  const reader = new FileReader()
+	  reader.onload = function() {
+		const lines = reader.result.trim().split("\n")
+		const max_error = Number(document.querySelector('#tolerance').value)
+		const sep_id = document.querySelector('#separator').value
+		const sep = sep_id == 'tab' ? "\t" : (sep_id == 'semicolon' ? ";" : ",")
+		const accepted = [ ], rejected = [ ], i_max = lines.length - 10
+		let total_lines = 0, total_success = 0
+		let greatest_in_error = 0, greatest_in_success = 0
+		for(let i = 0; i < lines.length; ++i) {
+			const clear_line = lines[i].trim()
+			if (clear_line != '') {
+				++total_lines
+				const els = clear_line.split(sep).map(e => Number(e.trim().replaceAll(',', '.')))
+				if (els.length < 7) {
+					if (rejected.length < 10) {
+						rejected.push(['parsing', i + 1, lines[i]])
+					} else
+						break
+				} else if(els.every(isFinite)){
+					const l_1 = els[0], a_1 = els[1], b_1 = els[2]
+					const l_2 = els[3], a_2 = els[4], b_2 = els[5]
+					const delta_e_submitted = els[6]
+					const delta_e_computed = ciede_2000(l_1, a_1, b_1, l_2, a_2, b_2)
+					const real_error = Math.abs(delta_e_submitted - delta_e_computed)
+					if (max_error < real_error) {
+						if (greatest_in_error < real_error)
+							greatest_in_error = real_error
+						if (rejected.length < 10) {
+							rejected.push([delta_e_computed, i + 1, lines[i]])
+						} else
+						break
+					} else {
+						if (greatest_in_success < real_error)
+							greatest_in_success = real_error
+						++total_success
+						if (i < 10 || i_max < i || Math.random() * lines.length < 10) {
+							accepted.push([delta_e_computed, i + 1, lines[i]])
+						}
+					}
+				} else {
+					if (rejected.length < 10) {
+						rejected.push(['format', i + 1, lines[i]])
+					} else
+						break
+				}
+			}
+		}
+		const err_tab = document.querySelector('#errorTable')
+		const err_body = err_tab.querySelector('tbody')
+		const err_foot = err_tab.querySelector('tfoot')
+		err_body.innerHTML = ''
+		if (rejected.length) {
+			err_tab.classList.remove('hidden')
+			for(const [arg, i, line] of rejected) {
+				const tr = document.createElement('tr')
+				if (arg == 'format'){
+					tr.innerHTML = '<td colspan="4">Parsing error at line <b>' + i + '</b>: <code>' + line.substring(0, 30) + '</code></td>'
+				} else if(arg == 'parsing'){
+					tr.innerHTML = '<td colspan="4">Format error at line <b>' + i + '</b>: <code>' + line.substring(0, 30) + '</code></td>'
+				} else {
+					const row = line.split(sep).map(e => Number(e.trim().replaceAll(',', '.')))
+					const data = row.slice(0, 6), delta_e_submitted = row[6]
+					const message = format_difference(Math.abs(delta_e_submitted - arg))
+					tr.innerHTML = '<td>' + i + '</td><td><a target="blank" href="' + link(...data) + '">ciede_2000</a>(' + with_dots(data.join(',')) + ')</td><td>' + with_dots('' + delta_e_submitted) + '</td><td>' + message + '</td>'
+				}
+				err_body.appendChild(tr)
+			}
+			err_foot.innerHTML = '<tr><td colspan="4">The <b>' + (total_lines - total_success) + '</b> errors found are listed above, with a magnitude up to ' + format_difference(greatest_in_error) + '.</td></tr>'
+		} else {
+			err_tab.classList.add('hidden')
+		}
+		
+		const success_tab = document.querySelector('#successTable')
+		const success_body = success_tab.querySelector('tbody')
+		const success_foot = success_tab.querySelector('tfoot')
+		success_body.innerHTML = ''
+		if (accepted.length) {
+			success_tab.classList.remove('hidden')
+			for(const [delta_e_computed, i, line] of accepted) {
+				const tr = document.createElement('tr')
+				const row = line.split(sep).map(e => Number(e.trim()))
+				const data = row.slice(0, 6), delta_e_submitted = row[6]
+				const message = format_difference(Math.abs(delta_e_submitted - delta_e_computed))
+				tr.innerHTML = '<td>' + i + '</td><td><a target="blank" href="' + link(...data) + '">ciede_2000</a>(' + with_dots(data.join(',')) + ')</td><td>' + message + '</td>'
+				success_body.appendChild(tr)
+			}
+			success_foot.innerHTML = '<tr><td colspan="3">Success with <b>' + total_success + '</b> exact ΔE 2000 values, given a tolerance ' + format_difference(greatest_in_success) + '.</td></tr>'
+		} else {
+			success_tab.classList.add('hidden')
+		}
+	  }
+	  reader.readAsText(file)
+	}
+
+	document.querySelector('#validate-file').addEventListener('click', () => {
+		document.querySelector('#validationResults').classList.remove('hidden')
+		const file = document.querySelector('#fileInput').files[0]
+		if (file)
+			open_file(file)
+	})
+
+	class Xorshift {
+		constructor(seed) {
+			this.state = BigInt(seed) ^ 0xff51afd7ed558ccdn;
+		}
+
+		next() {
+			this.state ^= (this.state << 13n) & 0xFFFFFFFFFFFFFFFFn;
+			this.state ^= (this.state >> 7n) & 0xFFFFFFFFFFFFFFFFn;
+			this.state ^= (this.state << 17n) & 0xFFFFFFFFFFFFFFFFn;
+			return this.state & 0xFFFFFFFFFFFFFFFFn;
+		}
+
+		nextFloat(min, max) {
+			return min + (Number(this.next()) / Number(0xFFFFFFFFFFFFFFFFn)) * (max - min);
+		}
+
+		nextBool() {
+			return (this.next() & 1n) === 1n;
+		}
+	}
+
+	document.querySelector('#generate-csv').addEventListener('click', () => {
+		let id = Number(document.querySelector('#sequenceNumber').value)
+		let count = Number(document.querySelector('#sampleCount').value)
+		if (id < 1 || !isFinite(id)) {
+			id = Date.now()
+		}
+		if (count < 1 || !isFinite(count))
+			count = 10
+		if (1000000 < count)
+			count = 1000000
+		document.querySelector('#sequenceNumber').value = id
+		document.querySelector('#sampleCount').value = count
+		const rng = new Xorshift(id)
+		const round = n => {
+			if (rng.nextBool())
+				return Math.round(n * 1000.0) / 1000.0
+			else if (rng.nextBool())
+				return Math.round(n * 100.0) / 100.0
+			else if (rng.nextBool())
+				return Math.round(n * 10.0) / 10.0
+			else if (rng.nextBool())
+				return Math.round(n)
+			else
+				return n
+		}
+		let lines = [ ]
+		
+		const with_delta_e = document.querySelector('#mode-generate').value == 'mode-1'
+		const sep_id = document.querySelector('#separator-generate').value
+		const sep = sep_id == 'tab' ? "\t" : (sep_id == 'semicolon' ? ";" : ",")
+		for(let i = 0; i < count; ++i) {
+			const values = [ round(rng.nextFloat(0, 100)), round(rng.nextFloat(-128, 128)), round(rng.nextFloat(-128, 128)) ]
+			values.push(round(rng.nextFloat(0, 1) < .05 ? values[0] : rng.nextFloat(0, 100)), round(rng.nextFloat(0, 1) < .05 ? values[1] : rng.nextFloat(-128, 128)), round(rng.nextFloat(0, 1) < .05 ? values[2] : rng.nextFloat(-128, 128)))
+			if (with_delta_e)
+				values.push(ciede_2000(...values))
+			lines.push(values.join(sep))
+		}
+		lines.push('')
+		lines = lines.join("\n")
+		const blob = new Blob([lines], { type: "text/csv" })
+		const link = document.createElement("a")
+		link.href = URL.createObjectURL(blob)
+		link.download = "ciede2000-tests-" + id + ".csv"
+		document.body.appendChild(link)
+		link.click()
+		document.body.removeChild(link)
+	})
+
+	document.querySelector('#solve-file').addEventListener('click', () => {
+		const file = document.querySelector('#solveFileInput').files[0]
+		if (file) {
+			const reader = new FileReader()
+				reader.onload = function() {
+				const sep_id = document.querySelector('#separator-solve').value
+				const sep = sep_id == 'tab' ? "\t" : (sep_id == 'semicolon' ? ";" : ",")
+				const lines = reader.result.trim().split("\n")
+				let res = [ ]
+				for(let i = 0; i < lines.length; ++i) {
+					let row = lines[i].split(sep)
+					if (5 < row.length) {
+						row = row.slice(0, 6)
+						const data = row.map(e => Number(e.trim()))
+						if (data.every(isFinite)) {
+							row.push(ciede_2000(...data))
+							res.push(row.join(sep))
+						}
+					}
+				}
+				if (res.length) {
+					res.push('')
+					res = res.join("\n")
+					const blob = new Blob([res], { type: "text/plain" })
+					const link = document.createElement("a")
+					link.href = URL.createObjectURL(blob)
+					link.download = file.name.replace(/([^.]+)/, '$1-solved')
+					document.body.appendChild(link)
+					link.click()
+					document.body.removeChild(link)
+				}
+			}
+			reader.readAsText(file)
+		}
+	})
+
+	function set_random_sequence() {
+		document.querySelector('#sequenceNumber').value = '' + +(Math.random() + '').slice(2, 2 + 5 + Math.floor(Math.random() * 5))
+	}
+	document.querySelector('.tabs .tab-button').addEventListener('click', set_random_sequence)
+	set_random_sequence()
+
+	</script>
+</body>
+</html>

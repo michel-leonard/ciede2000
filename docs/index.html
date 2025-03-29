@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Interactive ΔE 2000 Color Difference Application</title>
+	<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header>
+	<h1>ΔE 2000 Color Difference</h1>
+	<p>Transfer an image, and click to find the closest HTML named color using the <strong>ΔE 2000</strong> <a style="color:#fff" target="_blank" href="https://github.com/michel-leonard/ciede2000/blob/main/ciede-2000.js#L5">JavaScript</a> function.</p>
+</header>
+<main>
+	<div id="drop-zone">
+		<p>Drop or paste your image here...</p>
+		<input style=display:none type="file" id="file-input" accept="image/*" />
+	</div>
+	<div id="image-zone">
+		<canvas id="image-canvas" style="display:none;"></canvas>
+	</div>
+	<div id="color-picker" style="display:none;">
+		<table>
+			<thead>
+			<tr>
+				<th>Picker</th>
+				<th>HEX</th>
+				<th>RGB</th>
+				<th>HSL</th>
+				<th>Closest Name</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td rowspan="3">
+					<input type="color" id="color-input" value="#ffffff">
+				</td>
+				<td><label for="hex-24">24-bit</label> <input type="text" size="10" id="hex-24" readonly></td>
+				<td><label for="rgb-24">24-bit</label> <input type="text" size="18" id="rgb-24" readonly></td>
+				<td><label for="hsl-24">24-bit</label> <input type="text" size="18" id="hsl-24" readonly></td>
+				<td rowspan="3" id="color-name"></td>
+			</tr>
+			<tr>
+				<td><label for="hex-12">12-bit</label> <input type="text" size="10" id="hex-12" readonly></td>
+				<td><label for="rgb-12">12-bit</label> <input type="text" size="18" id="rgb-12" readonly></td>
+				<td><label for="hsl-12">12-bit</label> <input type="text" size="18" id="hsl-12" readonly></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	<div id="params">
+		<table>
+			<caption>Select a color and adjust these factors to your viewing parameters.</caption>
+			<thead>
+			<tr>
+				<th>kL (lightness)</th>
+				<th>kC (chroma)</th>
+				<th>kH (hue)</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td><input type="range" min="0.3" max="3" step="0.1" value="1.0"></td>
+				<td><input type="range" min="0.3" max="3" step="0.1" value="1.0"></td>
+				<td><input type="range" min="0.3" max="3" step="0.1" value="1.0"></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</main>
+<footer>
+	<p><a href="javascript:void(1 < window.history.length ? window.history.back() : window.location.href = 'https://bit.ly/ciede2000')">Back</a> - <a href="https://github.com/michel-leonard/ciede2000/tree/main/docs#list-of-pages">Menu</a> - This is not an official <strong>CIE</strong> application.</p>
+</footer>
+<script src="./all-colors.js"></script>
+<script src="./all-converters.js"></script>
+<script src="./delta-e-2000.js"></script>
+<script src="./script.js"></script>
+</body>
+</html>

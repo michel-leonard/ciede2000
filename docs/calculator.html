@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Online CIEDE2000 color difference ΔE2000 calculator</title>
+		<style>
+			body{background:#f5f5f5; font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+			p,label,input{font-size:20px}
+			a { color : blue }
+			#colors { font:16px/18px monospace; }
+			#res { font:24px/28px monospace; margin: 24px 0; text-align:center; }
+			#res tbody td { padding : 24px 16px ; background:#fff}
+			#res tfoot td { color : darkgray; padding : 0 50px ;}
+		</style>
+	</head>
+	<body>
+		<a href="javascript:void(1 < window.history.length ? window.history.back() : window.location.href = 'https://bit.ly/ciede2000')">Back</a> - <a href="https://github.com/michel-leonard/ciede2000/tree/main/docs#list-of-pages">Menu</a> - <a href="https://bit.ly/ciede2000-samples">ΔE2000 Generator</a> - <a target=_blank href="https://github.com/michel-leonard/ciede2000/tree/main/tests#comparison-with-university-of-rochester-worked-examples">Correctness</a> <br>
+		<h1>The CIEDE2000 color difference ΔE2000 calculator</h1>
+		<p>Paste your two L*a*b* colors here, exactly 6 numbers are required :</p>
+		<textarea rows=7 cols=120 placeholder="Paste your two colors here" id=colors>1.1
+2.2
+3.3
+4.4
+5.5
+6.6</textarea>
+		<div>
+			<h2>ΔE 2000 computed based on our <a target="_blank" href="https://github.com/michel-leonard/ciede2000/blob/main/ciede-2000.js#L5">JavaScript</a> implementation</h2>
+			<table id="res" border="">
+				<thead>
+					<tr>
+						<th>L1</th>
+						<th>a1</th>
+						<th>b1</th>
+						<th>L2</th>
+						<th>a2</th>
+						<th>b2</th>
+						<th>ΔE 2000</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1.1</td>
+						<td>2.2</td>
+						<td>3.3</td>
+						<td>4.4</td>
+						<td>5.5</td>
+						<td>6.6</td>
+						<td>4.847686870283433</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="7">ciede_2000(1.1, 2.2, 3.3, 4.4, 5.5, 6.6) === 4.847686870283433</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+		<p><i>Classic Software Engineering Solutions</i> — <a href="https://bit.ly/ciede2000-calculator">bit.ly/ciede2000-calculator</a> — <i>This is not an official CIE application.</i></p>
+		<script src="./delta-e-2000.js"></script>
+		<script>
+
+		// GitHub Project : https://github.com/michel-leonard/ciede2000
+		//  More Examples : https://michel-leonard.github.io/ciede2000/samples.html
+		
+		// L1 = 8.45           a1 = -119.05        b1 = -124.3384
+		// L2 = 8.45           a2 = -119.0         b2 = -124.3384
+		// CIE ΔE2000 = ΔE00 = 0.00841292195
+		
+		// L1 = 43.06          a1 = 11.052         b1 = -115.488
+		// L2 = 43.138         a2 = 11.052         b2 = -115.488
+		// CIE ΔE2000 = ΔE00 = 0.0717657693
+		
+		// L1 = 27.0           a1 = 24.9558        b1 = 27.4
+		// L2 = 27.0           a2 = 24.81          b2 = 27.4
+		// CIE ΔE2000 = ΔE00 = 0.08773417667
+		
+		// L1 = 87.88          a1 = -122.0         b1 = -51.4278
+		// L2 = 87.88          a2 = -116.0435      b2 = -51.4278
+		// CIE ΔE2000 = ΔE00 = 1.10366253348
+		
+		// L1 = 0.57           a1 = 95.62          b1 = -86.373
+		// L2 = 5.0            a2 = 95.62          b2 = -86.373
+		// CIE ΔE2000 = ΔE00 = 2.5981349259
+		
+		// L1 = 63.0           a1 = -11.7699       b1 = -99.4364
+		// L2 = 65.0           a2 = -20.764        b2 = -99.4364
+		// CIE ΔE2000 = ΔE00 = 4.00897594822
+		
+		// L1 = 61.7707        a1 = 90.8           b1 = 111.39
+		// L2 = 67.0           a2 = 92.0           b2 = 105.135
+		// CIE ΔE2000 = ΔE00 = 4.83661030659
+		
+		// L1 = 11.463         a1 = 29.71          b1 = 127.7
+		// L2 = 12.7531        a2 = 49.0           b2 = 95.0
+		// CIE ΔE2000 = ΔE00 = 14.7988550915
+		
+		// L1 = 30.2           a1 = -29.0          b1 = -69.0108
+		// L2 = 10.5           a2 = -9.0           b2 = -31.2119
+		// CIE ΔE2000 = ΔE00 = 19.38193296068
+		
+		// L1 = 22.922         a1 = 100.02         b1 = 11.2
+		// L2 = 36.57          a2 = 86.5736        b2 = 63.516
+		// CIE ΔE2000 = ΔE00 = 24.26046884082
+
+		const el_colors = document.getElementById("colors")
+		const el_res = document.getElementById("res")
+		const re = /[+-]?\d+(?:\.\d+)?\b/gi
+		const exec = function(arg) {
+			const str = colors.value.replaceAll(/ΔE[^\n]+/g, '').replaceAll(/[a-zA-Z0-9._-]*[a-zA-Z][a-zA-Z0-9._-]*/g, '')
+			let match, matches = [ ]
+			while(match = re.exec(str))
+				matches.push(parseFloat(match[0]))
+			if (matches.length != 6 || !matches.every(isFinite)) {
+				el_res.innerHTML = ''
+				history.replaceState(null, "", window.location.href.replace(/\?.*/, ""))
+				return
+			}
+			if (arg !== false){
+				const url = new URL(window.location)
+				url.searchParams.set('L1', matches[0])
+				url.searchParams.set('a1', matches[1])
+				url.searchParams.set('b1', matches[2])
+				url.searchParams.set('L2', matches[3])
+				url.searchParams.set('a2', matches[4])
+				url.searchParams.set('b2', matches[5])
+				history.replaceState(null, "", url)
+			}
+			const delta_E = ("" + ciede_2000(...matches)).replaceAll(/([0-9.-]+)/g, (m, n) => /^[0-9-]+$/.test(n) ? n + '.0' : n)
+			el_res.innerHTML = '<thead><tr><th>L1</th><th>a1</th><th>b1</th><th>L2</th><th>a2</th><th>b2</th><th>ΔE 2000</th></tr></thead><tbody><tr><td>' + matches.join('</td><td>').replaceAll(/([0-9.-]+)/g, (m, n) => /^[0-9-]+$/.test(n) ? n + '.0' : n) + '</td><td>' + delta_E + '</td></tr></tbody><tfoot><tr><td colspan=7>ciede_2000' + JSON.stringify(matches).replace('[', '(').replace(']', ')').replaceAll(',', ', ').replaceAll(/([0-9.-]+)/g, (m, n) => /^[0-9-]+$/.test(n) ? n + '.0' : n) + " === " + delta_E + '</td></tr></tfoot>'
+			if (arg === false) {
+				el_colors.placeholder = el_colors.value
+				el_colors.value = ''
+			}
+		}
+		colors.addEventListener("input", exec)
+		const url = new URL(window.location), values = new Array(6)
+		values[0] = parseFloat(url.searchParams.get('L1'))
+		values[1] = parseFloat(url.searchParams.get('a1'))
+		values[2] = parseFloat(url.searchParams.get('b1'))
+		values[3] = parseFloat(url.searchParams.get('L2'))
+		values[4] = parseFloat(url.searchParams.get('a2'))
+		values[5] = parseFloat(url.searchParams.get('b2'))
+		if (values.every(isFinite)) {
+			colors.innerHTML = values.join('\n')
+			exec(true)
+		} else
+		exec(false)
+		colors.focus()
+		</script>
+	</body>
+</html>

@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Thu, 20 Mar 2025 04:29:10 GMT -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ΔE 2000 Color Difference Generator – CIEDE2000 Examples</title>
+	<style>body{font-family:Arial,Helvetica,sans-serif;line-height:1.6;margin:0;padding:0;background:#f4f4f4;color:#333}main{max-width:800px;margin:20px auto;padding:20px;background:#fff;border-radius:5px;box-shadow:0 0 10px #0000001a}h1{margin-top:0}tbody td:nth-child(7),a{color:#0073e6;cursor:pointer;text-decoration:underline}tbody td:nth-child(7):hover,a:hover{color:darkblue}footer a{color:darkturquoise}table{width:100%;border-collapse:collapse;margin-top:20px}th,td{border:1px solid #ddd;padding:10px;text-align:center}tbody td{padding:4px 10px}tbody tr:nth-child(even) td{background:#f5f5f5}th{background:#0073e6;color:#fff}pre{background:#f9f9f9;padding:15px;border-left:5px solid #0073e6;overflow-x:auto}footer{text-align:center;padding:10px;background:#222;color:#fff;margin-top:20px}
+	</style>
+</head>
+<body>
+	<main>
+		<p><a href="javascript:void(1 < window.history.length ? window.history.back() : window.location.href = 'https://bit.ly/ciede2000')">Back</a> - <a href="https://github.com/michel-leonard/ciede2000/tree/main/docs#list-of-pages">Menu</a> - <a target="_blank" href="https://bit.ly/ciede2000-calculator">ΔE 2000 Calculator</a></p>
+		<h1>CIEDE2000 Color Difference Samples</h1>
+		<section>
+			<p>We believe that our implementations of the <strong>CIEDE2000 color difference formula</strong>, <i>whose source code is in the public domain</i>, are <a target="_blank" href="https://github.com/michel-leonard/ciede2000/tree/main/tests#comparison-with-university-of-rochester-worked-examples">correct</a> and consistent across all supported programming languages to 10 decimal places.</p>
+			<p>This <strong>interactive tool</strong> generates sample data to facilitate comparisons between implementations.</p>
+		</section>
+		<section>
+			<h2>Generator Settings</h2>
+			<p>Display the sequence <label>No. <input type="number" step="1" value="1" min="0" max="9007199254740990" id="seq"></label> of <strong>CIE ΔE 2000</strong> sample data.</p>
+		</section>
+		<section>
+			<h2>Examples of ΔE 2000 Calculations using our <a target="_blank" href="https://github.com/michel-leonard/ciede2000/blob/main/ciede-2000.js#L5">JavaScript</a> Function</h2>
+			<p>Action for these samples: <a href="#" id="nav-details">Show in JSON</a></p>
+			<table id="res-tab"><thead><tr><th>L1</th><th>a1</th><th>b1</th><th>L2</th><th>a2</th><th>b2</th><th>CIE ΔE 2000</th></tr></thead><tbody><tr><td>14.0000</td><td>36.0000</td><td>-3.3000</td><td>14.0000</td><td>36.0000</td><td>-3.3000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=14.0000&a1=36.0000&b1=-3.3000&L2=14.0000&a2=36.0000&b2=-3.3000">0.0000</a></td></tr><tr><td>39.8000</td><td>-63.3300</td><td>-37.0500</td><td>39.8000</td><td>-63.3000</td><td>-37.0500</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=39.8000&a1=-63.3300&b1=-37.0500&L2=39.8000&a2=-63.3000&b2=-37.0500">0.0088</a></td></tr><tr><td>99.8000</td><td>71.4589</td><td>91.6000</td><td>99.8830</td><td>71.4589</td><td>91.6000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=99.8000&a1=71.4589&b1=91.6000&L2=99.8830&a2=71.4589&b2=91.6000">0.0476</a></td></tr><tr><td>70.0000</td><td>-15.2017</td><td>52.2160</td><td>70.0000</td><td>-15.2017</td><td>52.0000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=70.0000&a1=-15.2017&b1=52.2160&L2=70.0000&a2=-15.2017&b2=52.0000">0.0703</a></td></tr><tr><td>8.9300</td><td>28.4920</td><td>-107.6000</td><td>8.9300</td><td>28.6738</td><td>-107.6052</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=8.9300&a1=28.4920&b1=-107.6000&L2=8.9300&a2=28.6738&b2=-107.6052">0.0991</a></td></tr><tr><td>32.3000</td><td>78.0000</td><td>-57.5500</td><td>32.6000</td><td>78.0000</td><td>-57.5500</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=32.3000&a1=78.0000&b1=-57.5500&L2=32.6000&a2=78.0000&b2=-57.5500">0.2390</a></td></tr><tr><td>99.1640</td><td>-94.8000</td><td>38.3000</td><td>99.1640</td><td>-96.8367</td><td>38.3000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=99.1640&a1=-94.8000&b1=38.3000&L2=99.1640&a2=-96.8367&b2=38.3000">0.4195</a></td></tr><tr><td>25.0000</td><td>120.3000</td><td>96.4200</td><td>26.0000</td><td>117.9380</td><td>94.5230</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=25.0000&a1=120.3000&b1=96.4200&L2=26.0000&a2=117.9380&b2=94.5230">0.8292</a></td></tr><tr><td>43.9000</td><td>-45.0000</td><td>-123.4930</td><td>43.9000</td><td>-45.0000</td><td>-115.8722</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=43.9000&a1=-45.0000&b1=-123.4930&L2=43.9000&a2=-45.0000&b2=-115.8722">1.0487</a></td></tr><tr><td>56.7500</td><td>113.7000</td><td>-22.6300</td><td>56.7500</td><td>107.8000</td><td>-19.0000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=56.7500&a1=113.7000&b1=-22.6300&L2=56.7500&a2=107.8000&b2=-19.0000">1.2878</a></td></tr><tr><td>91.7579</td><td>33.3490</td><td>94.2779</td><td>91.7579</td><td>33.3490</td><td>100.6525</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=91.7579&a1=33.3490&b1=94.2779&L2=91.7579&a2=33.3490&b2=100.6525">1.5237</a></td></tr><tr><td>29.0000</td><td>-30.4000</td><td>102.0000</td><td>29.0000</td><td>-30.4000</td><td>111.0000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=29.0000&a1=-30.4000&b1=102.0000&L2=29.0000&a2=-30.4000&b2=111.0000">1.7879</a></td></tr><tr><td>47.3000</td><td>33.0000</td><td>73.0000</td><td>47.3000</td><td>29.2000</td><td>73.0000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=47.3000&a1=33.0000&b1=73.0000&L2=47.3000&a2=29.2000&b2=73.0000">2.0740</a></td></tr><tr><td>71.9000</td><td>-32.0000</td><td>43.0000</td><td>71.9000</td><td>-36.9670</td><td>43.0000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=71.9000&a1=-32.0000&b1=43.0000&L2=71.9000&a2=-36.9670&b2=43.0000">2.1048</a></td></tr><tr><td>41.5470</td><td>55.5310</td><td>113.0000</td><td>41.5470</td><td>61.4100</td><td>113.0000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=41.5470&a1=55.5310&b1=113.0000&L2=41.5470&a2=61.4100&b2=113.0000">2.4545</a></td></tr><tr><td>62.9990</td><td>-6.3912</td><td>-56.3100</td><td>62.9990</td><td>-1.9136</td><td>-56.3100</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=62.9990&a1=-6.3912&b1=-56.3100&L2=62.9990&a2=-1.9136&b2=-56.3100">2.6591</a></td></tr><tr><td>57.4430</td><td>-54.6360</td><td>-2.8981</td><td>57.4430</td><td>-44.8400</td><td>-2.8981</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=57.4430&a1=-54.6360&b1=-2.8981&L2=57.4430&a2=-44.8400&b2=-2.8981">3.0367</a></td></tr><tr><td>55.0000</td><td>-40.3000</td><td>36.0000</td><td>55.0000</td><td>-40.3000</td><td>44.4145</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=55.0000&a1=-40.3000&b1=36.0000&L2=55.0000&a2=-40.3000&b2=44.4145">3.2412</a></td></tr><tr><td>9.9200</td><td>40.0000</td><td>28.4473</td><td>9.9200</td><td>42.1263</td><td>23.5800</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=9.9200&a1=40.0000&b1=28.4473&L2=9.9200&a2=42.1263&b2=23.5800">3.3523</a></td></tr><tr><td>68.8100</td><td>-87.5270</td><td>-122.3000</td><td>73.8128</td><td>-90.0000</td><td>-122.3000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=68.8100&a1=-87.5270&b1=-122.3000&L2=73.8128&a2=-90.0000&b2=-122.3000">3.8418</a></td></tr><tr><td>69.1220</td><td>120.8210</td><td>85.9000</td><td>74.0000</td><td>125.7000</td><td>85.9000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=69.1220&a1=120.8210&b1=85.9000&L2=74.0000&a2=125.7000&b2=85.9000">3.8806</a></td></tr><tr><td>23.6700</td><td>60.8000</td><td>-44.0290</td><td>29.0000</td><td>60.8000</td><td>-47.1300</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=23.6700&a1=60.8000&b1=-44.0290&L2=29.0000&a2=60.8000&b2=-47.1300">4.1276</a></td></tr><tr><td>20.3060</td><td>58.0000</td><td>-15.3600</td><td>24.0000</td><td>54.9427</td><td>-7.1100</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=20.3060&a1=58.0000&b1=-15.3600&L2=24.0000&a2=54.9427&b2=-7.1100">4.4309</a></td></tr><tr><td>16.3000</td><td>125.9300</td><td>-12.0000</td><td>23.0000</td><td>125.9300</td><td>-12.0000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=16.3000&a1=125.9300&b1=-12.0000&L2=23.0000&a2=125.9300&b2=-12.0000">4.6195</a></td></tr><tr><td>65.0881</td><td>98.8000</td><td>16.6826</td><td>71.1000</td><td>93.6000</td><td>13.0090</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=65.0881&a1=98.8000&b1=16.6826&L2=71.1000&a2=93.6000&b2=13.0090">4.9867</a></td></tr><tr><td>45.0870</td><td>51.2410</td><td>-27.3600</td><td>45.0000</td><td>69.4000</td><td>-24.9000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=45.0870&a1=51.2410&b1=-27.3600&L2=45.0000&a2=69.4000&b2=-24.9000">5.6385</a></td></tr><tr><td>48.2491</td><td>-62.0000</td><td>-83.3390</td><td>52.3520</td><td>-55.6334</td><td>-102.2276</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=48.2491&a1=-62.0000&b1=-83.3390&L2=52.3520&a2=-55.6334&b2=-102.2276">6.1638</a></td></tr><tr><td>83.0261</td><td>-36.6500</td><td>-59.9000</td><td>81.5906</td><td>-35.9810</td><td>-96.9000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=83.0261&a1=-36.6500&b1=-59.9000&L2=81.5906&a2=-35.9810&b2=-96.9000">7.8041</a></td></tr><tr><td>58.0000</td><td>-101.1000</td><td>-81.4000</td><td>57.0000</td><td>-65.4400</td><td>-84.7290</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=58.0000&a1=-101.1000&b1=-81.4000&L2=57.0000&a2=-65.4400&b2=-84.7290">8.4414</a></td></tr><tr><td>59.7500</td><td>51.4000</td><td>-6.1500</td><td>62.0000</td><td>85.8057</td><td>-21.0000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=59.7500&a1=51.4000&b1=-6.1500&L2=62.0000&a2=85.8057&b2=-21.0000">9.5933</a></td></tr><tr><td>14.9157</td><td>120.1000</td><td>-40.3641</td><td>27.8274</td><td>122.0000</td><td>-62.0000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=14.9157&a1=120.1000&b1=-40.3641&L2=27.8274&a2=122.0000&b2=-62.0000">10.5121</a></td></tr><tr><td>61.0000</td><td>126.0000</td><td>-110.6000</td><td>57.8130</td><td>66.0600</td><td>-67.0000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=61.0000&a1=126.0000&b1=-110.6000&L2=57.8130&a2=66.0600&b2=-67.0000">11.3226</a></td></tr><tr><td>9.6432</td><td>-95.7000</td><td>45.0000</td><td>25.0000</td><td>-84.5199</td><td>67.6550</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=9.6432&a1=-95.7000&b1=45.0000&L2=25.0000&a2=-84.5199&b2=67.6550">12.9656</a></td></tr><tr><td>36.7840</td><td>99.8600</td><td>-90.8000</td><td>24.1000</td><td>69.0000</td><td>-91.9321</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=36.7840&a1=99.8600&b1=-90.8000&L2=24.1000&a2=69.0000&b2=-91.9321">13.9087</a></td></tr><tr><td>66.0670</td><td>47.5590</td><td>-20.1890</td><td>52.2000</td><td>62.2470</td><td>-5.1700</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=66.0670&a1=47.5590&b1=-20.1890&L2=52.2000&a2=62.2470&b2=-5.1700">15.0487</a></td></tr><tr><td>32.7966</td><td>-40.5600</td><td>46.1900</td><td>21.7180</td><td>-99.2200</td><td>87.5350</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=32.7966&a1=-40.5600&b1=46.1900&L2=21.7180&a2=-99.2200&b2=87.5350">16.0871</a></td></tr><tr><td>28.1000</td><td>8.8600</td><td>-59.0000</td><td>38.0000</td><td>11.6510</td><td>-121.0187</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=28.1000&a1=8.8600&b1=-59.0000&L2=38.0000&a2=11.6510&b2=-121.0187">16.5627</a></td></tr><tr><td>38.1000</td><td>-119.9000</td><td>55.2881</td><td>14.4990</td><td>-126.5845</td><td>56.9000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=38.1000&a1=-119.9000&b1=55.2881&L2=14.4990&a2=-126.5845&b2=56.9000">17.5202</a></td></tr><tr><td>44.7520</td><td>-41.4410</td><td>-51.0000</td><td>29.3000</td><td>-101.9330</td><td>-76.2300</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=44.7520&a1=-41.4410&b1=-51.0000&L2=29.3000&a2=-101.9330&b2=-76.2300">18.8831</a></td></tr><tr><td>34.0000</td><td>-74.1300</td><td>60.1576</td><td>54.1100</td><td>-100.0000</td><td>83.1528</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=34.0000&a1=-74.1300&b1=60.1576&L2=54.1100&a2=-100.0000&b2=83.1528">19.6209</a></td></tr><tr><td>5.8220</td><td>113.0000</td><td>9.5200</td><td>7.8310</td><td>71.3161</td><td>47.7621</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=5.8220&a1=113.0000&b1=9.5200&L2=7.8310&a2=71.3161&b2=47.7621">20.8534</a></td></tr><tr><td>33.3000</td><td>54.9280</td><td>23.3000</td><td>39.1237</td><td>127.3850</td><td>100.9798</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=33.3000&a1=54.9280&b1=23.3000&L2=39.1237&a2=127.3850&b2=100.9798">21.1211</a></td></tr><tr><td>52.8300</td><td>-10.5024</td><td>-57.9270</td><td>45.8800</td><td>-53.9700</td><td>-30.5207</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=52.8300&a1=-10.5024&b1=-57.9270&L2=45.8800&a2=-53.9700&b2=-30.5207">22.3386</a></td></tr><tr><td>33.5600</td><td>108.0000</td><td>-123.0000</td><td>34.0000</td><td>88.8210</td><td>-23.5689</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=33.5600&a1=108.0000&b1=-123.0000&L2=34.0000&a2=88.8210&b2=-23.5689">23.9241</a></td></tr><tr><td>86.0000</td><td>45.0833</td><td>-27.0700</td><td>67.4000</td><td>108.6000</td><td>11.0000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=86.0000&a1=45.0833&b1=-27.0700&L2=67.4000&a2=108.6000&b2=11.0000">25.0621</a></td></tr><tr><td>11.8000</td><td>-54.2000</td><td>6.9800</td><td>2.1294</td><td>-106.0200</td><td>-59.7396</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=11.8000&a1=-54.2000&b1=6.9800&L2=2.1294&a2=-106.0200&b2=-59.7396">27.1730</a></td></tr><tr><td>9.0000</td><td>82.0550</td><td>124.4582</td><td>44.5000</td><td>-83.3000</td><td>-30.0000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=9.0000&a1=82.0550&b1=124.4582&L2=44.5000&a2=-83.3000&b2=-30.0000">73.4213</a></td></tr><tr><td>25.1300</td><td>27.1930</td><td>87.8320</td><td>98.0300</td><td>-97.0000</td><td>97.8000</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=25.1300&a1=27.1930&b1=87.8320&L2=98.0300&a2=-97.0000&b2=97.8000">80.2862</a></td></tr><tr><td>75.1800</td><td>-71.8300</td><td>-65.2000</td><td>90.2500</td><td>117.1074</td><td>-25.5880</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=75.1800&a1=-71.8300&b1=-65.2000&L2=90.2500&a2=117.1074&b2=-25.5880">114.9373</a></td></tr><tr><td>46.5650</td><td>-127.8108</td><td>-117.7262</td><td>80.0000</td><td>119.0050</td><td>-52.2070</td><td><a target="_blank" href="https://michel-leonard.github.io/ciede2000/calculator.html?L1=46.5650&a1=-127.8108&b1=-117.7262&L2=80.0000&a2=119.0050&b2=-52.2070">129.3130</a></td></tr></tbody><tfoot><tr><td colspan="7">These <b>50</b> samples were filtered from <b>21401</b> ΔE 2000 calculations.</td></tr></tfoot></table>
+		</section>
+		<section>
+			<h2>Dataset Information in JSON Format</h2>
+			<p>Actions for these samples: <a href="#" id="nav-plain">Show in HTML</a> - <a href="#" id="dl-json">Download as JSON</a> - <a href="#" id="dl-csv">Download as CSV</a></p>
+			<pre onclick="return; const range = document.createRange(),	 s = window.getSelection(); range.selectNodeContents(this); s.removeAllRanges(); s.addRange(range)" id="res-json">{
+	"meta": {
+		"title": "The CIEDE2000 color difference formula - 50 examples",
+		"description": "Michel Leonard's JavaScript Samples - Sequence No. 1",
+		"precision": "All our implementations must correspond to at least 10 decimal places",
+		"implementations-url": "https://github.com/michel-leonard/ciede2000",
+		"data-url": "https://michel-leonard.github.io/ciede2000/samples.html?sequence=1",
+		"columns": ["L1", "a1", "b1", "L2", "a2", "b2", "CIE-DeltaE2000"]
+	},
+	"data": [
+		[ 14.0, 36.0, -3.3, 14.0, 36.0, -3.3, 0.0 ],
+		[ 39.8, -63.33, -37.05, 39.8, -63.3, -37.05, 0.00883874283033875 ],
+		[ 99.8, 71.4589, 91.6, 99.883, 71.4589, 91.6, 0.047574529787981705 ],
+		[ 70.0, -15.2017, 52.216, 70.0, -15.2017, 52.0, 0.07033027679232455 ],
+		[ 8.93, 28.492, -107.6, 8.93, 28.6738, -107.6052, 0.09913487434919417 ],
+		[ 32.3, 78.0, -57.55, 32.6, 78.0, -57.55, 0.23902517432793688 ],
+		[ 99.164, -94.8, 38.3, 99.164, -96.8367, 38.3, 0.4194921789333031 ],
+		[ 25.0, 120.3, 96.42, 26.0, 117.938, 94.523, 0.8292412047293171 ],
+		[ 43.9, -45.0, -123.493, 43.9, -45.0, -115.8722, 1.0487327780742304 ],
+		[ 56.75, 113.7, -22.63, 56.75, 107.8, -19.0, 1.2877842109202728 ],
+		[ 91.7579, 33.349, 94.2779, 91.7579, 33.349, 100.6525, 1.5236921943426158 ],
+		[ 29.0, -30.4, 102.0, 29.0, -30.4, 111.0, 1.78787058455394 ],
+		[ 47.3, 33.0, 73.0, 47.3, 29.2, 73.0, 2.0740287590658366 ],
+		[ 71.9, -32.0, 43.0, 71.9, -36.967, 43.0, 2.1047971189989174 ],
+		[ 41.547, 55.531, 113.0, 41.547, 61.41, 113.0, 2.4544753263458277 ],
+		[ 62.999, -6.3912, -56.31, 62.999, -1.9136, -56.31, 2.6591078212889827 ],
+		[ 57.443, -54.636, -2.8981, 57.443, -44.84, -2.8981, 3.036707066432936 ],
+		[ 55.0, -40.3, 36.0, 55.0, -40.3, 44.4145, 3.241156149215767 ],
+		[ 9.92, 40.0, 28.4473, 9.92, 42.1263, 23.58, 3.352259924178484 ],
+		[ 68.81, -87.527, -122.3, 73.8128, -90.0, -122.3, 3.8418028420771937 ],
+		[ 69.122, 120.821, 85.9, 74.0, 125.7, 85.9, 3.880624015526269 ],
+		[ 23.67, 60.8, -44.029, 29.0, 60.8, -47.13, 4.127618566285043 ],
+		[ 20.306, 58.0, -15.36, 24.0, 54.9427, -7.11, 4.4308968857439694 ],
+		[ 16.3, 125.93, -12.0, 23.0, 125.93, -12.0, 4.619457646046973 ],
+		[ 65.0881, 98.8, 16.6826, 71.1, 93.6, 13.009, 4.986702595150162 ],
+		[ 45.087, 51.241, -27.36, 45.0, 69.4, -24.9, 5.638484873168969 ],
+		[ 48.2491, -62.0, -83.339, 52.352, -55.6334, -102.2276, 6.16379428312971 ],
+		[ 83.0261, -36.65, -59.9, 81.5906, -35.981, -96.9, 7.804059730971632 ],
+		[ 58.0, -101.1, -81.4, 57.0, -65.44, -84.729, 8.441390306969444 ],
+		[ 59.75, 51.4, -6.15, 62.0, 85.8057, -21.0, 9.593272816557546 ],
+		[ 14.9157, 120.1, -40.3641, 27.8274, 122.0, -62.0, 10.512069168712888 ],
+		[ 61.0, 126.0, -110.6, 57.813, 66.06, -67.0, 11.322574596400026 ],
+		[ 9.6432, -95.7, 45.0, 25.0, -84.5199, 67.655, 12.965576703230274 ],
+		[ 36.784, 99.86, -90.8, 24.1, 69.0, -91.9321, 13.908675708818064 ],
+		[ 66.067, 47.559, -20.189, 52.2, 62.247, -5.17, 15.048713957604578 ],
+		[ 32.7966, -40.56, 46.19, 21.718, -99.22, 87.535, 16.087067128589148 ],
+		[ 28.1, 8.86, -59.0, 38.0, 11.651, -121.0187, 16.562671632298866 ],
+		[ 38.1, -119.9, 55.2881, 14.499, -126.5845, 56.9, 17.520180585514446 ],
+		[ 44.752, -41.441, -51.0, 29.3, -101.933, -76.23, 18.883071191480695 ],
+		[ 34.0, -74.13, 60.1576, 54.11, -100.0, 83.1528, 19.62086280267705 ],
+		[ 5.822, 113.0, 9.52, 7.831, 71.3161, 47.7621, 20.85343271932268 ],
+		[ 33.3, 54.928, 23.3, 39.1237, 127.385, 100.9798, 21.12112450885159 ],
+		[ 52.83, -10.5024, -57.927, 45.88, -53.97, -30.5207, 22.338575052071647 ],
+		[ 33.56, 108.0, -123.0, 34.0, 88.821, -23.5689, 23.924103660686526 ],
+		[ 86.0, 45.0833, -27.07, 67.4, 108.6, 11.0, 25.06207141751759 ],
+		[ 11.8, -54.2, 6.98, 2.1294, -106.02, -59.7396, 27.172991715797153 ],
+		[ 9.0, 82.055, 124.4582, 44.5, -83.3, -30.0, 73.42125211042762 ],
+		[ 25.13, 27.193, 87.832, 98.03, -97.0, 97.8, 80.28620259007624 ],
+		[ 75.18, -71.83, -65.2, 90.25, 117.1074, -25.588, 114.93726276589972 ],
+		[ 46.565, -127.8108, -117.7262, 80.0, 119.005, -52.207, 129.31303976239818 ]
+	]
+}
+</pre>
+		</section>
+	</main>
+	<footer>
+		<p>Classic Software Engineering Solutions — Share it permanently <a href="https://bit.ly/ciede2000-samples">bit.ly/ciede2000-samples</a> — This is not an official CIE application.</p>
+	</footer>
+	<script src="./delta-e-2000.js"></script>
+	<script>
+	class Xorshift {
+		constructor(seed) {
+			this.state = BigInt(seed) ^ 0xff51afd7ed558ccdn;
+		}
+	
+		next() {
+			this.state ^= (this.state << 13n) & 0xFFFFFFFFFFFFFFFFn;
+			this.state ^= (this.state >> 7n) & 0xFFFFFFFFFFFFFFFFn;
+			this.state ^= (this.state << 17n) & 0xFFFFFFFFFFFFFFFFn;
+			return this.state & 0xFFFFFFFFFFFFFFFFn;
+		}
+	
+		nextFloat(min, max) {
+			return min + (Number(this.next()) / Number(0xFFFFFFFFFFFFFFFFn)) * (max - min);
+		}
+	
+		nextBool() {
+			return (this.next() & 1n) === 1n;
+		}
+	}
+	function downloadFile(data, seq, extension) {
+		const blob = new Blob([data], { type: extension == "json" ? "application/json" : "text/plain" })
+		const link = document.createElement("a")
+		link.href = URL.createObjectURL(blob)
+		link.download = "ciede2000-samples-" + seq + "." + extension
+		document.body.appendChild(link)
+		link.click()
+		document.body.removeChild(link)
+	}
+	const el_seq = document.getElementById("seq")
+	const el_nav_details = document.getElementById("nav-details")
+	const el_nav_plain = document.getElementById("nav-plain")
+	const el_tab = document.getElementById("res-tab")
+	const el_dl_csv = document.getElementById("dl-csv")
+	const el_dl_json = document.getElementById("dl-json")
+	const el_json = document.getElementById("res-json")
+	function scroll(i) {
+		document.body.querySelector('section:nth-child(' + i + ') > h2').scrollIntoView({ behavior: 'smooth' })
+	}
+	function random_sequence_id() {
+		let s = '' + parseInt(1.0 + Math.random() * 9.0) 
+		for(let i = 1, j = parseInt(4.0 + Math.random() * 12.0); i < j; ++i)
+			s += parseInt(Math.random() * 10.0)
+		return parseInt(s)
+	}
+	const in_bounds = (min, max, ...nums) => nums.every(e => e >= min && e <= max)
+	function exec(arg) {
+		delete exec.seq
+		const url = new URL(window.location)
+		const seq = Math.abs(parseInt(el_seq.value)) || random_sequence_id()
+		url.searchParams.set("sequence", seq)
+		history.replaceState(null, "", url)
+		el_seq.value = seq
+		const rng = new Xorshift(seq)
+		function round(n) {
+			const r = rng.nextFloat(0., 1.)
+			f = r < .2 ? 1. : r < .4 ? 10. : r < .6 ? 100. : r < .8 ? 1000. : 10000.
+			return Math.round(n * f) / f
+		}
+		el_tab.innerHTML = '<thead><tr><th>L1</th><th>a1</th><th>b1</th><th>L2</th><th>a2</th><th>b2</th><th>CIE ΔE 2000</th></tr></thead><tbody></tbody><tfoot><tr><td colspan="7">Initialization...</td></tr></tfoot>'
+		el_json.innerHTML = ''
+		setTimeout(async () => {
+			const tbody = el_tab.querySelector('tbody')
+			const tfoot = el_tab.querySelector('tfoot td')
+			const rows = [ ]
+			for(let a = 0., b = 0., i = 0; b < 150.5; ++i) {
+				const row = new Array(7)
+				do {
+					row[0] = round(rng.nextFloat(0.0, 100.0))
+					row[1] = round(rng.nextFloat(-128.0, 128.0))
+					row[2] = round(rng.nextFloat(-128.0, 128.0))
+					if (b <= 1.0) {
+						row[3] = rng.nextFloat(0.0, 1.0) < 0.5 ? row[0] : round(row[0] + rng.nextFloat(0.0, 2.5))
+						row[4] = rng.nextFloat(0.0, 1.0) < 0.5 ? row[1] : round(row[1] + rng.nextFloat(-2.5, 2.5))
+						row[5] = rng.nextFloat(0.0, 1.0) < 0.5 ? row[2] : round(row[2] + rng.nextFloat(-2.5, 2.5))
+					} else if (b <= 5.0) {
+						row[3] = rng.nextFloat(0.0, 1.0) < 0.5 ? row[0] : round(row[0] + rng.nextFloat(0.0, 10.0))
+						row[4] = rng.nextFloat(0.0, 1.0) < 0.5 ? row[1] : round(row[1] + rng.nextFloat(-10.0, 10.0))
+						row[5] = rng.nextFloat(0.0, 1.0) < 0.5 ? row[2] : round(row[2] + rng.nextFloat(-10.0, 10.0))
+					} else {
+						row[3] = round(rng.nextFloat(0.0, 100.0))
+						row[4] = round(rng.nextFloat(-128.0, 128.0))
+						row[5] = round(rng.nextFloat(-128.0, 128.0))
+					}
+				} while(!in_bounds(0.0, 100.0, row[0], row[3]) || !in_bounds(-128.0, 128.0, row[1], row[2], row[4], row[5]))
+				const delta_e = ciede_2000(...row)
+				if (a <= delta_e && delta_e <= b) {
+					await new Promise(res => {
+						setTimeout(() => {
+							a = b + 1e-14
+							b += b < .1 ? .025 : b < 1. ? .25 : b < 5. ? .25 : b < 25. ? 1.0 : 25.
+							row[6] = Math.round(delta_e * 10000.) / 10000.
+							rows.push(row)
+							const tr = document.createElement('tr')
+							tr.innerHTML = "<td>" + row.map(e => e.toFixed(4)).join("</td><td>") + "</td>"
+							tbody.appendChild(tr)
+							tfoot.innerHTML = 'These <b>' + tbody.childElementCount + '</b> samples were filtered from <b>' + i + '</b> ΔE 2000 calculations.'
+							row[6] = delta_e
+							res()
+						}, 0)
+					})
+				}
+			}
+			exec.seq = seq
+			el_json.innerHTML = '{\n	"meta": {\n		"title": "The CIEDE2000 color difference formula - ' + rows.length + ' examples",\n		"description": "Michel Leonard\'s JavaScript Samples - Sequence No. ' + seq + '",\n		"precision": "All our implementations must correspond to at least 10 decimal places",\n		"implementations-url": "https://github.com/michel-leonard/ciede2000",\n		"data-url": "' + window.location + '",\n		"columns": ["L1", "a1", "b1", "L2", "a2", "b2", "CIE-DeltaE2000"]\n	},\n	"data": ' + JSON.stringify(rows).replace("[[", "[\n\t\t[ ").replace("]]", " ]\n\t]").replaceAll("],[", " ],\n\t\t[ ").replaceAll(/([0-9.-]+)(,?)/g, (m, n, c) => {
+				if (/^[0-9-]+$/.test(n))
+					n += '.0'
+				return c === ',' ? n + ', ' : n
+			}) + '\n}\n'
+			if (arg && seq != 1)
+				scroll(6)
+		}, 100)
+	}
+	el_nav_details.addEventListener("click", function(e){
+		e.preventDefault()
+		scroll(6)
+	})
+	el_nav_plain.addEventListener("click", function(e){
+		e.preventDefault()
+		scroll(4)
+	})
+	el_dl_json.addEventListener("click", function(e){
+		e.preventDefault()
+		if (exec.seq) 
+			downloadFile(el_json.innerHTML, exec.seq, "json")
+	})
+	el_dl_csv.addEventListener("click", function(e){
+		e.preventDefault()
+		if (exec.seq) {
+			const data = JSON.parse(el_json.innerHTML), meta = data.meta, rows = data.data
+			let res = ''
+			for(let k in meta)
+				if (k != 'columns')
+					res += '# ' + k + ': ' + meta[k] + '\n'
+			res += 'L1,a1,b1,L2,a2,b2,CIE-DeltaE2000\n' + rows.map(e => e.join(",")).join("\n").replaceAll(/([0-9.-]+)/g, (m, n) => /^[0-9-]+$/.test(n) ? n + '.0' : n)
+			downloadFile(res, exec.seq, "csv")
+		}
+	})
+	el_tab.addEventListener("click", function(event) {
+			let target = event.target
+			if (target.tagName === "TD" && target.cellIndex === 6 && target.parentElement.parentElement.tagName === "TBODY") {
+				let cells = target.parentElement.querySelectorAll("td")
+				if (cells.length >= 6) {
+					let L1 = cells[0].innerText.trim()
+					let a1 = cells[1].innerText.trim()
+					let b1 = cells[2].innerText.trim()
+					let L2 = cells[3].innerText.trim()
+					let a2 = cells[4].innerText.trim()
+					let b2 = cells[5].innerText.trim()
+					let url = `https://michel-leonard.github.io/ciede2000/calculator.html?L1=${L1}&a1=${a1}&b1=${b1}&L2=${L2}&a2=${a2}&b2=${b2}`;
+					let link = document.createElement("a")
+					link.href = url
+					link.target = "_blank"
+					document.body.appendChild(link)
+					link.click()
+					document.body.removeChild(link)
+				}
+			}
+		})
+	el_seq.value = parseInt(new URL(window.location).searchParams.get('sequence')) || 1
+	el_seq.addEventListener('input', function() {
+		clearTimeout(el_seq.timed)
+		el_seq.timed = setTimeout(exec, 1000)
+	})
+	setTimeout(exec, 0, true)
+	</script>
+</body>
+</html>

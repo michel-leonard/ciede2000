@@ -1,0 +1,17 @@
+# CIEDE2000 Color Difference Reference Data
+# Source: ICC HDR Working Group
+# URL: https://www.color.org/groups/hdr/HDRWG-Summer2020.pdf
+# Columns:
+# L1, a1, b1  -> Lab color components of the first color
+# L2, a2, b2  -> Lab color components of the second color
+# CIE ΔE2000  -> Computed color difference using the CIEDE2000 formula
+L1,a1,b1,L2,a2,b2,CIEDE2000
+100.0,0.0,0.0,0.0,0.0,0.0,100.0
+100.0,0.0,0.0,100.0,0.0,0.0,0.0
+50.0,2.5,0.0,73.0,25.0,-18.0,27.1492
+50.0,2.5,0.0,61.0,-5.0,29.0,22.8977
+50.0,2.5,0.0,56.0,-27.0,-3.0,31.903
+50.0,2.5,0.0,58.0,24.0,15.0,19.4535
+84.25,5.74,96.0,84.46,8.88,96.49,1.6743
+84.25,5.74,96.0,84.52,5.75,93.09,0.5887
+84.25,5.74,96.0,84.37,5.86,99.42,0.6395
